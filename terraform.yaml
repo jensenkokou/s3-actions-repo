@@ -1,22 +1,33 @@
-name: terraform 
+name: terraform
 
-on: [push]
+on:
+  push:
 
-env: 
+env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-  AWS_SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
 
-jobs: 
+jobs:
   terraform:
-  runs-on: ubuntu-latest 
-    steps: 
-    - uses: actions/checkout@v3
-    - uses: hashicorp/setup-terraform@v2
-    with:
-      terraform_version: 1.1.9
-   - name: Terraform Init 
-     run: terraform init 
-     - name: Terraform validate
-     run: terraform validate 
-     - name: Terraform plan
-     run: terraform plan
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.1.9
+    - name: Terraform Init
+      run: |
+         eval 'ssh-agent -s'
+         ssh-add
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      run: terraform plan

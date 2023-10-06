@@ -1,3 +1,1 @@
-resource "aws_ec2_instance" "name" {
-  
-}
+resource "aws_ec2_instance" "name" {}
