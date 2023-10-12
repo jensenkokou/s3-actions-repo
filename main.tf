@@ -9,5 +9,16 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+
+ backend "s3" {
+  
+  bucket   = "bootcamp32-prod-22"
+  key      = "action/terraform.tfstate"
+  region   = "us-west-1"
+  encrpypt = true
+
+ }
 }
  
+  
