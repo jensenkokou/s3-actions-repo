@@ -10,7 +10,7 @@ terraform {
     }
   }
 
-
+# Backend Configuration 
  backend "s3" {
   
   bucket   = "bootcamp32-prod-22"
@@ -19,6 +19,10 @@ terraform {
   encrypt = true
 
  }
+}
+
+provider "aws" {
+  region = "us-west-2"
 }
  
   
