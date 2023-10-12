@@ -15,7 +15,7 @@ terraform {
   
   bucket   = "bootcamp32-prod-22"
   key      = "action/terraform.tfstate"
-  region   = "us-west-1"
+  region   = "us-west-2"
   encrypt = true
 
  }
