@@ -10,10 +10,4 @@ terraform {
     }
   }
 
- backend "s3" {
-    bucket = "landmark-automation-jensen"
-    key    = "action/terraform.tfstate"
-    region = "us-west-1" # region im creating my backend in 
-    encrypt = true
-  }
-}
+ 
